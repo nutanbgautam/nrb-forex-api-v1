@@ -8,9 +8,9 @@ export default class FetchData extends React.Component{
     };
 
     async loadDataFromAPI(){
-        const all_datas   =[]
+        const all_datas   =[];
         this.start_date    = this.props.startDate ? this.props.startDate : "2021-01-01";
-        this.end_date      = this.props.endDate ? this.props.endDate : "2021-01-05";
+        this.end_date      = this.props.endDate ? this.props.endDate : "2021-01-20";
         var current_page    = 1;
         var url = new URL("https://www.nrb.org.np/api/forex/v1/rates");
         const params = {from:this.start_date,to:this.end_date,per_page:100,page:current_page};

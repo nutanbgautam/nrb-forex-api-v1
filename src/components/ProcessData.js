@@ -4,7 +4,25 @@ import FetchData from './FetchData';
 export default class ProcessData extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {startDate: '2020-01-01',endDate:'2020-01-07',currency:'USD'};
+
+      //Initial Date Data
+      var date = new Date();
+      date.setDate(date.getDate()-30);
+      var dates = (date.toString()).split(" ");
+      var mm = ("JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(dates[1]) / 3 + 1);
+      mm = mm>9 ? mm : "0"+mm;
+      var yyyy = dates[3];
+      var dd = dates[2];
+      var sd = yyyy+"-"+mm+"-"+dd;
+
+      date = new Date();
+      dd = String(date.getDate()).padStart(2, '0');
+      mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+      yyyy = date.getFullYear();
+      var ed = yyyy + '-' + mm + '-' + dd;
+      //Initial Date Data END
+
+      this.state = {startDate: sd,endDate:ed,currency:'USD'};
       this.listOfCurrency = [
         "USD",
         "INR",
